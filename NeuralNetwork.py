@@ -117,3 +117,12 @@ prediction_softmmax = tf.nn.softmax(prediction)
 tf.random.set_seed(1234)
 # Weights can be randomly assigned at first. Fixing the seed can help having
 # reproductible results when convergence is not yet reached.
+
+## Set variables in order to track them later
+# Here W = vector of weights associated to features; X = matrix of features;
+# b = weight of scalar type
+# Example is based on MovieLens dataset for a collaborative recommendation system,
+# there's as many weights as there is users and as many features as there is movies
+W = tf.Variable(tf.random.normal((num_users,  num_features),dtype=tf.float64),  name='W')
+X = tf.Variable(tf.random.normal((num_movies, num_features),dtype=tf.float64),  name='X')
+b = tf.Variable(tf.random.normal((1,          num_users),   dtype=tf.float64),  name='b')
